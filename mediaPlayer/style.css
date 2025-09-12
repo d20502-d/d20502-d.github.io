@@ -1,0 +1,63 @@
+/* store my custom cariables*/
+:root {
+  --colour-01: white;
+  --colour-02: black;
+  --colour-03: cornflowerblue;
+  --colour-04: coral;
+  --border: solid coral 2px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  line-height: 1.6;
+  background-color: var(--colour-03);
+  color: var(--colour-01);
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+nav {
+  border: var(--border);
+  padding: 1rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: var(--border);
+}
+
+.mediaPlayerSection {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#mediaPlayer {
+  max-width: 100%;
+}
+
+.mediaPlayerControlCenter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+#playPauseButton {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+#timelineProgress {
+  flex: 1;
+}
