@@ -1,0 +1,188 @@
+body {
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif, Times;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* place content at the top */
+  height: 100%;
+  margin: 0;
+  padding-top: 10px;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Pin title & instructions on the top */
+.page-header {
+  position: sticky;
+  top: 0;
+  padding: 3px 16px;
+  z-index: 10;
+}
+.page-header #page-title {
+  margin: 0 0 0 0;
+}
+.page-header .instructions {
+  max-width: 700px;
+  margin: 0 auto 10px;
+  color: #444;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Layout wrapper to place interactive and preview boards side-by-side */
+.boards {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  margin-top: 50px; /* create space under header */
+}
+
+.board h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+#puzzle-container {
+  /*
+      Layout rationale:
+      - A 3x3 CSS grid communicates the puzzle structure visually and semantically (paired with role="grid").
+      - Gaps create breathing room between blocks, aiding scannability and targeting.
+      - Fixed width ensures predictable block size for a controlled, legible prototype.
+    */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  width: 300px;
+  margin: 0 auto 20px;
+  /* Improve drag UX on touch devices */
+  touch-action: none; /* prevent pan/zoom during drag */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#preview-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  width: 300px;
+  margin: 0 auto 20px;
+}
+
+.blk.preview {
+  cursor: default;
+  outline: none;
+}
+
+.blk {
+  /*
+      Interaction emphasis (Click):
+      - A strong background and clear type ensure blocks look tappable/clickable.
+      - Subtle transition supports perceived responsiveness without adding complexity.
+    */
+  background-color: #4a90e2;
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  /* Square blocks regardless of width */
+  aspect-ratio: 1 / 1;
+  cursor: default;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Visual feedback during live drag */
+.blk.dragging {
+  z-index: 2;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.blk.empty {
+  background-color: #ddd;
+  box-shadow: none;
+  cursor: default;
+}
+
+/*
+  Affordance for valid moves only:
+  - Highlight and animate blocks that are actually movable (adjacent to empty).
+  - Reduce random clicking and support learnability.
+*/
+.blk.movable {
+  outline: 3px solid #ffcc00;
+  cursor: grab;
+}
+.blk.movable:hover {
+  background-color: #357abd;
+}
+.blk.movable:active {
+  cursor: grabbing;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  margin: 0 auto;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#move-counter {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  font-size: 0.9rem;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+  padding: 10px 20px;
+  padding-left: 3%;
+}

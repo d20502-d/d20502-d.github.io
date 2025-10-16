@@ -3,7 +3,83 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Sliding Number Puzzle</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
-  <body></body>
+
+  <body>
+    <div class="container" id="section1">
+      <div class="page-header" aria-labelledby="page-title">
+        <h1 id="page-title">Sliding Number Puzzle</h1>
+        <br />
+        <!-- Instructions -->
+        <div class="instructions" id="instructions">
+          <p>
+            Click or drag a numbered block adjacent to the empty space to slide
+            it into the empty space.
+          </p>
+          <p>
+            Arrange the numbers in the order of the target pattern to solve the
+            puzzle.
+          </p>
+        </div>
+      </div>
+      <div class="boards">
+        <!-- Static solved preview (left) -->
+        <section class="board preview" aria-labelledby="preview-title">
+          <h2 id="preview-title">Target pattern</h2>
+          <div
+            id="preview-container"
+            role="grid"
+            aria-label="Solved puzzle reference"
+            aria-readonly="true"
+            aria-hidden="false"
+          >
+            <!-- 3x3 solved order: 1..8 then empty -->
+            <div class="blk preview" role="gridcell" aria-label="Blk 1">1</div>
+            <div class="blk preview" role="gridcell" aria-label="Blk 2">2</div>
+            <div class="blk preview" role="gridcell" aria-label="Blk 3">3</div>
+            <div class="blk preview" role="gridcell" aria-label="Blk 4">4</div>
+            <div class="blk preview" role="gridcell" aria-label="Blk 5">5</div>
+            <div class="blk preview" role="gridcell" aria-label="Blk 6">6</div>
+            <div class="blk preview" role="gridcell" aria-label="Blk 7">7</div>
+            <div class="blk preview" role="gridcell" aria-label="Blk 8">8</div>
+            <div
+              class="blk empty preview"
+              role="gridcell"
+              aria-label="Empty space"
+            ></div>
+          </div>
+        </section>
+
+        <!-- Interactive puzzle (now on the right) -->
+        <section class="board" aria-labelledby="interactive-title">
+          <h2 id="interactive-title" class="visually-hidden">
+            Interactive puzzle
+          </h2>
+          <!--
+            Accessibility notes:
+              - role="grid" and role="gridcell" communicate the board structure.
+              - aria-label describes purpose contextually (drag/click adjacent blocks into the empty space).
+              - Move counter uses aria-live so screen readers announce progress.
+            -->
+          <div
+            id="puzzle-container"
+            role="grid"
+            aria-label="Sliding puzzle, drag or click adjacent blocks into the empty space to move"
+          ></div>
+          <div class="controls">
+            <button id="shuffle-btn" aria-label="Shuffle the blocks">
+              Shuffle
+            </button>
+            <div id="move-counter" aria-live="polite">Moves: 0</div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2025 Sliding Number Puzzle Website. All rights reserved.</p>
+    </footer>
+  </body>
 </html>
