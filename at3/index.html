@@ -7,6 +7,35 @@
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
+  <!--
+      Context:
+      - Game
+      - Sliding Number Puzzle (inspired from the 15-puzzle game but I simplified it to 3x3)
+      
+      Interaction:
+      - Click (cuz it allows precise and easy movements that fit the fast-paced nature of games)
+      - Drag
+
+      Why Click?
+      - It's available on desktop browsers; can directly tap on touch devices without extra code (though I do not
+        explicitly implement touch/drag here to maintain the single-action constraint).
+      - Reduces cognitive load: users quickly form the mental model “click a tile next to the hole to move it.”
+
+      UI Feedback and Learnability:
+      - Compute which tiles are currently movable (adjacent to the empty) and add a `.movable` class to visually hint valid moves.
+      - The move counter is updated live and announced via an aria-live region for assistive technologies.
+      - An alert is used for the win state for simplicity; I just keep this simple for this assignment.
+
+      Accessibility:
+      - `role="grid"` on the container and `role="gridcell"` on tiles communicate structure.
+      - Each tile receives an `aria-label` describing whether it is a numbered tile and whether it is movable, or that it is the
+        empty space. The move counter uses `aria-live="polite"` to announce updates.
+
+      Reflection on challenges:
+      - Single-action purity vs. usability: Keyboard support is helpful but excluded to satisfy the assignment focus on one action.
+      - Discoverability: Visual outlining of movable tiles prevents blind clicking and speeds up onboarding.
+      - Scope control: Avoided timers, levels, or score mechanics that could distract from the primary interaction.
+    -->
 
   <body>
     <div class="container" id="section1">

@@ -6,8 +6,10 @@ body {
   height: 100%;
   margin: 0;
   padding-top: 10px;
+  background-color: #c6b7dd;
+  color: #242439;
 }
-
+/*ede1ff*/
 .container {
   text-align: center;
   padding: 2rem;
@@ -98,8 +100,12 @@ h1 {
       - A strong background and clear type ensure blocks look tappable/clickable.
       - Subtle transition supports perceived responsiveness without adding complexity.
     */
-  background-color: #4a90e2;
-  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #242439;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,18 +116,25 @@ h1 {
   cursor: default;
   border-radius: 5px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  box-shadow: inset 2px 2px 6px 0 rgba(0, 0, 0, 0.2),
+    inset -2px -2px 6px 0 rgba(255, 255, 255, 0.5);
+  outline: none;
 }
 
 /* Visual feedback during live drag */
 .blk.dragging {
   z-index: 2;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 2px 2px 6px 0 rgba(0, 0, 0, 0.2),
+    inset -2px -2px 6px 0 rgba(255, 255, 255, 0.5);
 }
 
 .blk.empty {
-  background-color: #ddd;
+  background-color: #c6b7dd;
   box-shadow: none;
+  box-shadow: inset 2px 2px 6px 0 rgba(0, 0, 0, 0.2),
+    inset -2px -2px 6px 0 rgba(202, 202, 202, 0.2);
   cursor: default;
 }
 
@@ -131,11 +144,14 @@ h1 {
   - Reduce random clicking and support learnability.
 */
 .blk.movable {
-  outline: 3px solid #ffcc00;
+  outline: 2px solid #7182bb;
   cursor: grab;
 }
 .blk.movable:hover {
-  background-color: #357abd;
+  background: rgba(255, 251, 251, 0.987);
+  background-color: #e2d5f6ce;
+  box-shadow: inset 2px 2px 6px 0 rgba(0, 0, 0, 0.2),
+    inset -2px -2px 6px 0 rgba(255, 255, 255, 0.5);
 }
 .blk.movable:active {
   cursor: grabbing;
@@ -150,7 +166,7 @@ h1 {
 }
 
 button {
-  background-color: #4caf50;
+  background-color: #5c4c74;
   color: white;
   border: none;
   text-align: center;
@@ -164,7 +180,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #e46484;
 }
 
 #move-counter {
